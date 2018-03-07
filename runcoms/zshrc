@@ -11,3 +11,25 @@ if [[ -s "${ZDOTDIR:-$HOME}/.zprezto/init.zsh" ]]; then
 fi
 
 # Customize to your needs...
+
+# Enable Comments
+setopt interactivecomments
+
+# Exports
+
+# Aliases
+alias dksa='docker stop $(docker ps -a -q)'
+alias dkrma='docker rm -fv $(docker ps -a -q)'
+alias dstats="docker stats --format 'table {{.Name}}\t{{.CPUPerc}}\t{{.MemPerc}}\t{{.MemUsage}}\t{{.NetIO}}\t{{.BlockIO}}'"
+
+
+# Functions
+getpr () {
+    git fetch upstream pull/$1/merge:pr/$1 && git checkout pr/$1
+}
+
+dkproxy () {
+    echo 'Run this in another terminal to connect: export DOCKER_HOST=localhost:2345'
+    ssh -t -L 2345:localhost:2345 $1 'socat TCP-LISTEN:2345,reuseaddr,fork UNIX-CLIENT:/var/run/docker.sock'
+}
+
