@@ -1,0 +1,45 @@
+
+[hub]
+    protocol = git
+
+[credential]
+    helper = osxkeychain
+
+[core]
+    excludesfile = ~/.gitignore_global
+    editor = vim
+    commentchar = ";"
+[user]
+    name = Neil Parsons
+    email = neilparsons@gmail.com
+[diff]
+    tool = bc3
+[merge]
+    tool = bc3
+[nmerge]
+    tool = intellij
+[push]
+    default = nothing
+[alias]
+    st = status
+    ci = commit
+    co = checkout
+    br = branch
+    pu = pull
+[filter "lfs"]
+    clean = git-lfs clean %f
+    smudge = git-lfs smudge %f
+    required = true
+[mergetool "intellij"]
+    cmd = idea merge $(cd $(dirname "$LOCAL") && pwd)/$(basename "$LOCAL") $(cd $(dirname "$REMOTE") && pwd)/$(basename "$REMOTE") $(cd $(dirname "$BASE") && pwd)/$(basename "$BASE") $(cd $(dirname "$MERGED") && pwd)/$(basename "$MERGED")
+    trustExitCode = true
+    #keepBackup = false
+[difftool "intellij"]
+    cmd = idea diff $(cd $(dirname "$LOCAL") && pwd)/$(basename "$LOCAL") $(cd $(dirname "$REMOTE") && pwd)/$(basename "$REMOTE")
+
+[mergetool "bc3"]
+    trustExitCode = true
+[difftool "bc3"]
+    trustExitCode = true
+[mergetool]
+    keepBackup = false
