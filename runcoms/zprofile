@@ -45,6 +45,8 @@ typeset -gU cdpath fpath mailpath path
 path=(
   $HOME/bin
   /usr/local/{bin,sbin}
+  $HOME/Library/Android/sdk/platform-tools
+  $HOME/Library/Python/3.6/bin
   $path
 )
 
