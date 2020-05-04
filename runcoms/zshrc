@@ -12,6 +12,9 @@ fi
 
 # Customize to your needs...
 
+# Use Vim mode
+bindkey -v
+
 # Enable Comments
 setopt interactivecomments
 
